@@ -9,10 +9,16 @@ Demo giao Diện GUI của chatbot:
 Prompt hỏi chatbot:
 
 Nhân viên:
+
 mã nhân viên hoặc tên nhân viên
+
 Vd: NV020, Nguyen Chan Huy
+
 Thang máy:
+
 Toc do thang may la bao nhieu
+
 Thang may chay nhanh hay cham
+
 Thang may chay nhanh khong
 
