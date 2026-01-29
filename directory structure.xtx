@@ -1,16 +1,51 @@
-elevator_ai_project/
-│
-├── backend/
-│   ├── api.py              # FastAPI entry
-│   ├── schemas.py          # Request / Response
-│   ├── chatbot/
-│   │   ├── llm.py          # AI model
-│   │   ├── prompt.py       # Prompt cho đề tài
-│   │   └── handler.py      # Điều phối AI
-│   │
-│   ├── elevator/
-│   │   ├── state.py        # Trạng thái thang máy
-│   │   ├── rules.py        # Luật vận hành
-│   │   └── controller.py  # Điều khiển logic
-│   │
-│   └── config.py
+.
+├── backend
+│   ├── api.py
+│   ├── build_embeddings.py
+│   ├── chatbot_engine (copy).py
+│   ├── chatbot_engine.py
+│   ├── embedding_service.py
+│   ├── employee_service.py
+│   ├── __init__.py
+│   ├── ollama_service.py
+│   ├── __pycache__
+│   │   ├── api.cpython-38.pyc
+│   │   ├── build_embeddings.cpython-38.pyc
+│   │   ├── chatbot_engine.cpython-36.pyc
+│   │   ├── chatbot_engine.cpython-38.pyc
+│   │   ├── embedding_service.cpython-38.pyc
+│   │   ├── employee_service.cpython-36.pyc
+│   │   ├── employee_service.cpython-38.pyc
+│   │   ├── __init__.cpython-36.pyc
+│   │   ├── __init__.cpython-38.pyc
+│   │   ├── ollama_service.cpython-38.pyc
+│   │   ├── schemas.cpython-38.pyc
+│   │   ├── semantic_matcher.cpython-38.pyc
+│   │   ├── test_chatbot.cpython-36.pyc
+│   │   └── test_chatbot.cpython-38.pyc
+│   ├── schemas.py
+│   ├── semantic_matcher.py
+│   └── test_chatbot.py
+├── config
+│   ├── db_config.py
+│   ├── db_config.py.save
+│   ├── __init__.py
+│   └── __pycache__
+│       ├── db_config.cpython-36.pyc
+│       ├── db_config.cpython-38.pyc
+│       ├── __init__.cpython-36.pyc
+│       └── __init__.cpython-38.pyc
+├── database
+│   ├── remove_vietnamese_accent.py
+│   ├── schema.sql
+│   └── seed.sql
+├── gui
+│   ├── __init__.py
+│   ├── main.py
+│   └── __pycache__
+│       ├── __init__.cpython-38.pyc
+│       └── main.cpython-38.pyc
+├── __init__.py
+├── logs
+└── models
+
