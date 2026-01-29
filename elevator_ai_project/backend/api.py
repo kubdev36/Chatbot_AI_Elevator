@@ -1,42 +1,26 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from backend.chatbot_engine import chatbot_reply
-from backend.employee_service import find_employee
+app = FastAPI()
 
-app = FastAPI(title="SUNYBOT API")
-
-# --------- DATA MODELS ----------
+# ===== Schema =====
 class ChatRequest(BaseModel):
-    message: str
+    question: str
 
-class EmployeeRequest(BaseModel):
-    key: str
+class ChatResponse(BaseModel):
+    answer: str
 
+# ===== Test root =====
+@app.get("/")
+def root():
+    return {"status": "API is running"}
 
-# --------- ROUTES ----------
-@app.get("/health")
-def health():
-    return {"status": "ok"}
-
-
-@app.post("/chat")
+# ===== Chat API =====
+@app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
-    answer = chatbot_reply(req.message)
-    return {
-        "question": req.message,
-        "answer": answer
-    }
+    print("Question received:", req.question)
 
+    # test đơn giản trước
+    return {"answer": f"Bạn vừa hỏi: {req.question}"}
 
-@app.post("/employee")
-def employee(req: EmployeeRequest):
-    emp = find_employee(req.key)
-    if not emp:
-        return {"found": False}
-
-    return {
-        "found": True,
-        "data": emp
-    }
 

@@ -3,10 +3,10 @@ from backend.semantic_matcher import find_best_intent_semantic
 from backend.ollama_service import ollama_answer
 
 
-def chatbot_reply(question: str):
+def get_chatbot_response(question: str):
     q = question.strip()
 
-    # 1. Tra nhan vien
+    # 1️⃣ TRA CỨU NHÂN VIÊN
     emp = find_employee(q)
     if emp:
         return (
@@ -20,11 +20,12 @@ def chatbot_reply(question: str):
             f"Email: {emp['email']}"
         )
 
-    # 2. Embedding + cosine similarity
+    # 2️⃣ EMBEDDING
     answer, score = find_best_intent_semantic(q)
     if answer and score > 0.6:
         return answer
 
-    # 3. LLM fallback (Ollama DeepSeek)
+    # 3️⃣ FALLBACK LLM
     return ollama_answer(q)
+
 
