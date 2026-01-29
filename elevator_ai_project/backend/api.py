@@ -1,26 +1,52 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
 
-app = FastAPI()
+from backend.schemas import ChatRequest, ChatResponse
+from backend.chatbot_engine import get_chatbot_response
 
-# ===== Schema =====
-class ChatRequest(BaseModel):
-    question: str
+app = FastAPI(title="Elevator AI Chatbot")
 
-class ChatResponse(BaseModel):
-    answer: str
+# ===============================
+# CORS (cho Web UI gọi API)
+# ===============================
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# ===== Test root =====
-@app.get("/")
-def root():
-    return {"status": "API is running"}
+# ===============================
+# PATH ABSOLUTE (RẤT QUAN TRỌNG)
+# ===============================
+BASE_DIR = Path(__file__).resolve().parent.parent
+WEB_DIR = BASE_DIR / "gui" / "web"
 
-# ===== Chat API =====
+# ===============================
+# STATIC FILES
+# ===============================
+app.mount(
+    "/static",
+    StaticFiles(directory=WEB_DIR / "static"),
+    name="static"
+)
+
+# ===============================
+# HOME PAGE (CHAT UI)
+# ===============================
+@app.get("/", response_class=HTMLResponse)
+def home():
+    html_path = WEB_DIR / "templates" / "chat.html"
+    return html_path.read_text(encoding="utf-8")
+
+# ===============================
+# CHAT API
+# ===============================
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
-    print("Question received:", req.question)
-
-    # test đơn giản trước
-    return {"answer": f"Bạn vừa hỏi: {req.question}"}
-
+    answer = get_chatbot_response(req.question)
+    return ChatResponse(answer=answer)
 
