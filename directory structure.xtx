@@ -1,0 +1,16 @@
+elevator_ai_project/
+│
+├── backend/
+│   ├── api.py              # FastAPI entry
+│   ├── schemas.py          # Request / Response
+│   ├── chatbot/
+│   │   ├── llm.py          # AI model
+│   │   ├── prompt.py       # Prompt cho đề tài
+│   │   └── handler.py      # Điều phối AI
+│   │
+│   ├── elevator/
+│   │   ├── state.py        # Trạng thái thang máy
+│   │   ├── rules.py        # Luật vận hành
+│   │   └── controller.py  # Điều khiển logic
+│   │
+│   └── config.py
