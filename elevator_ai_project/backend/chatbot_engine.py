@@ -2,10 +2,11 @@ from backend.employee_service import find_employee
 from backend.semantic_matcher import find_best_intent_semantic
 from backend.ollama_service import ollama_answer
 
-def get_chatbot_response(question: str):
+
+def chatbot_reply(question: str):
     q = question.strip()
 
-    # 1️NHAN VIEN
+    # 1. Tra nhan vien
     emp = find_employee(q)
     if emp:
         return (
@@ -19,11 +20,11 @@ def get_chatbot_response(question: str):
             f"Email: {emp['email']}"
         )
 
-    # 2️EMBEDDING
+    # 2. Embedding + cosine similarity
     answer, score = find_best_intent_semantic(q)
-    if answer:
+    if answer and score > 0.6:
         return answer
 
-    #LLM
+    # 3. LLM fallback (Ollama DeepSeek)
     return ollama_answer(q)
 
