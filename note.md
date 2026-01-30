@@ -28,3 +28,6 @@ lệnh chạy API chatbot:
 ```bash
 python -m uvicorn backend.api:app --host 0.0.0.0 --port 8000 --reload
 ```
+lệnh chạy java fx
+cd chatbot-javafx
+mvn javafx:run

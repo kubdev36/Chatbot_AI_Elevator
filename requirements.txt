@@ -1,0 +1,6 @@
+mysql-connector-python
+PyQt5
+requests
+numpy
+sentence-transformers
+torch

@@ -1,0 +1,108 @@
+/* Main application styles */
+.root {
+    -fx-font-family: "Segoe UI", "System";
+    -fx-font-size: 12;
+}
+
+/* Chat container */
+#chatContainer {
+    -fx-padding: 10;
+    -fx-spacing: 5;
+    -fx-background-color: #F5F5F5;
+}
+
+/* Text input field */
+#messageInput {
+    -fx-font-size: 14;
+    -fx-padding: 10;
+    -fx-border-radius: 5;
+    -fx-border-color: #CCCCCC;
+    -fx-text-fill: #333333;
+}
+
+#messageInput:focused {
+    -fx-border-color: #1976D2;
+    -fx-border-width: 2;
+}
+
+/* Send button */
+#sendButton {
+    -fx-font-size: 14;
+    -fx-padding: 10;
+    -fx-background-color: #1976D2;
+    -fx-text-fill: white;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+#sendButton:hover {
+    -fx-background-color: #1565C0;
+}
+
+#sendButton:pressed {
+    -fx-background-color: #0D47A1;
+}
+
+#sendButton:disabled {
+    -fx-background-color: #CCCCCC;
+    -fx-text-fill: #999999;
+}
+
+/* Status label */
+#statusLabel {
+    -fx-text-fill: #666666;
+    -fx-font-size: 12;
+}
+
+/* Message boxes styling */
+.user-message {
+    -fx-background-color: #DCF8C6;
+    -fx-padding: 10;
+    -fx-border-radius: 10;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.bot-message {
+    -fx-background-color: #E3F2FD;
+    -fx-padding: 10;
+    -fx-border-radius: 10;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.system-message {
+    -fx-background-color: #F5F5F5;
+    -fx-padding: 10;
+    -fx-border-radius: 10;
+    -fx-alignment: CENTER;
+    -fx-text-alignment: CENTER;
+}
+
+/* Scroll pane styling */
+#chatScrollPane {
+    -fx-control-inner-background: #F5F5F5;
+    -fx-fit-to-width: true;
+}
+
+.scroll-bar {
+    -fx-block-increment: 10;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-padding: 0;
+}
+
+/* Label styling */
+.label {
+    -fx-text-fill: #333333;
+}
+
+.label:focused {
+    -fx-text-fill: #1976D2;
+}
+
+/* Text flow for messages */
+.text-flow {
+    -fx-padding: 10;
+    -fx-border-radius: 10;
+}
