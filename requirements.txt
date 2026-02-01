@@ -4,3 +4,6 @@ requests
 numpy
 sentence-transformers
 torch
+fastapi
+uvicorn
+python-multipart

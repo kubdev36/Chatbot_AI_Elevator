@@ -77,7 +77,7 @@ public class ChatbotController {
         statusLabel.setText("Trạng thái: Đang xử lý...");
 
         // 2. Gọi API trong nền (Background Thread)
-        Task<String> task = new Task<>() {
+        Task<String> task = new Task<>() { 
             @Override
             protected String call() throws Exception {
                 JsonObject requestBody = new JsonObject();
